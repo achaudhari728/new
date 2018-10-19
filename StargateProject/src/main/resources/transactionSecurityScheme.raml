@@ -1,0 +1,24 @@
+#%RAML 1.0 SecurityScheme
+type: OAuth 2.0
+description: Apply the OAuth 2.0 security policy to resource methods for authenticating API requests
+describedBy:
+  headers:
+  queryParameters:
+    access_token:
+      description: |
+        Used to send a valid OAuth 2 access token. Do not use together with the                      "Authorization" header.
+      type: string
+  responses:
+    401:
+     body: 
+       application/json:
+        example:
+         {
+            "code" : "401",
+           "message" : "You are not authorized"  
+         } 
+    
+settings:
+       authorizationUri: http://oauth2-stargate.us-e2.cloudhub.io/oauth/authorize
+       accessTokenUri:  http://oauth2-stargate2018.us-e2.cloudhub.io/oauth/token
+       authorizationGrants: client_credentials
